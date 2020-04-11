@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="failure_network_connection">Failure Network Connection</string>
+    <string name="failure_unavailable">Failure Unavailable</string>
+    <string name="failure_server_error">Failure Server Error</string>
+    <string name="failure_unavailable_unknown">Failure Unavailable Unknown</string>
+    <string name="request_permissions">The permissions are necessary</string>
+    <string name="permissions_granted">Permissions Granted</string>
+</resources>

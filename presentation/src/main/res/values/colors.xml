@@ -1,0 +1,7 @@
+<resources>
+
+    <color name="warning_snackbar">#eca75c</color>
+    <color name="error_snackbar">#c65656</color>
+    <color name="white">#fdfdfd</color>
+
+</resources>

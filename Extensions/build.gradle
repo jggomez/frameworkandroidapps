@@ -1,0 +1,12 @@
+import co.devhack.dependencies.Libraries
+
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Libraries.kotlin
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

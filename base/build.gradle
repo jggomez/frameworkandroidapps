@@ -1,0 +1,17 @@
+import co.devhack.dependencies.ExternalLibraries
+import co.devhack.dependencies.Libraries
+
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Libraries.kotlin
+    implementation Libraries.kotlinCoroutines
+    implementation ExternalLibraries.retrofit
+    implementation ExternalLibraries.moshiConverter
+    implementation ExternalLibraries.loggingInterceptor
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
