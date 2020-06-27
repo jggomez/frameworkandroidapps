@@ -12,7 +12,7 @@ android {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
         versionCode 1
-        versionName "0.1"
+        versionName "0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -37,3 +37,5 @@ dependencies {
     testImplementation Testing.junit
     androidTestImplementation Testing.testExt
 }
+
+apply from: Scripts.publish

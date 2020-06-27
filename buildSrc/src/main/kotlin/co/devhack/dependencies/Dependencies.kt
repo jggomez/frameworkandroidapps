@@ -10,6 +10,10 @@ object Releases {
     const val versionName = "1.0"
 }
 
+object Scripts {
+    const val publish = "publish.gradle"
+}
+
 object Versions {
     const val compileSdk = 29
     const val buildToolsVersion = "29.0.2"

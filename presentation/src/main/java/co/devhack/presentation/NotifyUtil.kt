@@ -9,6 +9,8 @@ import com.google.android.material.snackbar.Snackbar
 
 object NotifyUtil {
 
+    private const val NOT_FOUND_MESSAGE = "THE MESSAGE IS NOT FOUND"
+
     fun notify(
         @StringRes messageIdRes: Int? = null,
         message: String? = null,
@@ -22,14 +24,24 @@ object NotifyUtil {
                 Snackbar.LENGTH_SHORT
             ).apply {
                 view.setBackgroundColor(ContextCompat.getColor(context, colorId))
-            }.show()
+                show()
+            }
             message != null -> Snackbar.make(
                 view,
                 message,
                 Snackbar.LENGTH_SHORT
             ).apply {
                 view.setBackgroundColor(ContextCompat.getColor(context, colorId))
-            }.show()
+                show()
+            }
+            else -> Snackbar.make(
+                view,
+                NOT_FOUND_MESSAGE,
+                Snackbar.LENGTH_SHORT
+            ).apply {
+                view.setBackgroundColor(ContextCompat.getColor(context, colorId))
+                show()
+            }
         }
     }
 
@@ -42,21 +54,23 @@ object NotifyUtil {
         context: Context,
         action: () -> Any
     ) {
-        val snackBar = Snackbar.make(
-            view,
-            message,
-            Snackbar.LENGTH_INDEFINITE
-        ).apply {
-            view.setBackgroundColor(ContextCompat.getColor(context, colorId))
-        }
+        view.rootView?.let {
+            val snackBar = Snackbar.make(
+                it,
+                message,
+                Snackbar.LENGTH_INDEFINITE
+            ).apply {
+                view.setBackgroundColor(ContextCompat.getColor(context, colorId))
+            }
 
-        snackBar.setAction(actionText) { action.invoke() }
-        snackBar.setActionTextColor(
-            ContextCompat.getColor(
-                context,
-                colorActionId
-            )
-        ).show()
+            snackBar.setAction(actionText) { action.invoke() }
+            snackBar.setActionTextColor(
+                ContextCompat.getColor(
+                    context,
+                    colorActionId
+                )
+            ).show()
+        }
     }
 
 }

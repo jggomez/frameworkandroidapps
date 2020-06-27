@@ -1,0 +1,30 @@
+import co.devhack.dependencies.Bintray
+import co.devhack.dependencies.BintrayAndroidExtensions
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+
+    bintrayRepo = Bintray.bintrayRepo
+    bintrayName = BintrayAndroidExtensions.bintrayName
+    libraryName = BintrayAndroidExtensions.libraryName
+    artifact = BintrayAndroidExtensions.artifact
+    libraryVersion = BintrayAndroidExtensions.version
+    libraryDescription = BintrayAndroidExtensions.libraryDescription
+
+    publishedGroupId = Bintray.publishedGroupId
+    siteUrl = Bintray.siteUrl
+    gitUrl = Bintray.gitUrl
+    developerId = Bintray.developerId
+    developerName = Bintray.developerName
+    developerEmail = Bintray.developerEmail
+    organization = Bintray.organization
+    licenseName = Bintray.licenseName
+    licenseUrl = Bintray.licenseUrl
+    allLicenses = [Bintray.allLicenses]
+
+}
+
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/install.gradle'
+apply from: 'https://raw.githubusercontent.com/quangctkm9207/template-files/master/android/gradle/bintray.gradle'

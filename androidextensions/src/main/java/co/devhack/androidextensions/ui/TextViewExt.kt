@@ -7,7 +7,7 @@ import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun TextView.setFecha(context: Context) {
+fun TextView.dialogDate(context: Context) {
     Calendar.getInstance().also { calendar ->
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
@@ -29,7 +29,7 @@ fun TextView.setFecha(context: Context) {
     }
 }
 
-fun TextView.setHora(context: Context) {
+fun TextView.dialogHour(context: Context) {
     Calendar.getInstance().also { calendar ->
 
         val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->

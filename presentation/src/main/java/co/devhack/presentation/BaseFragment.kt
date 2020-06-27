@@ -3,31 +3,27 @@ package co.devhack.presentation
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.ColorRes
+import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import co.devhack.base.error.Failure
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId) {
 
     private var permitCode: Int? = null
     private lateinit var lstRequestPermissions: Array<String>
     private lateinit var blockAcceptPermissions: () -> Unit
 
-    abstract fun layoutId(): Int
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(view)
+    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View =
-        inflater.inflate(layoutId(), container, false)
-
+    abstract fun initView(view: View)
 
     abstract fun hideProgress()
 
@@ -73,8 +69,15 @@ abstract class BaseFragment : Fragment() {
         )
     }
 
-    fun notifySuccess(@StringRes messageIdRes: Int? = null, message: String? = null, @ColorRes colorId: Int) {
-        NotifyUtil.notify(messageIdRes, message, colorId, view!!)
+    fun notifySuccess(
+        @StringRes messageIdRes: Int? = null,
+        message: String? = null,
+        @ColorRes colorId: Int
+    ) {
+        val view = activity?.window?.decorView?.findViewById<View>(android.R.id.content)
+        view?.let {
+            NotifyUtil.notify(messageIdRes, message, colorId, view)
+        }
     }
 
     open fun notifyWithAction(

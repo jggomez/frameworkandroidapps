@@ -30,9 +30,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(Modules.base)
+
     implementation Libraries.kotlin
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.design
+
+    implementation ExternalLibraries.retrofit
 
     // Compresor Image
     implementation ExternalLibraries.compressorImage
@@ -43,3 +48,5 @@ dependencies {
     testImplementation Testing.junit
     androidTestImplementation Testing.testExt
 }
+
+apply from: Scripts.publish

@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.ColorRes
-import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import co.devhack.base.error.Failure
@@ -18,24 +17,27 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId())
         hideToolbar()
+        initView()
     }
 
     private fun hideToolbar() {
         supportActionBar?.hide()
     }
 
-    abstract fun hideProgress()
+    abstract fun initView()
 
-    abstract fun showProgress()
+    open fun hideProgress(){
+
+    }
+
+    open fun showProgress(){
+
+    }
 
     open fun showPermissionExplain() {
         throw NotImplementedError("Should be override this method and customize the permission explain")
     }
-
-    @LayoutRes
-    protected abstract fun layoutResId(): Int
 
     fun handleFailure(failure: Failure) {
         when (failure) {

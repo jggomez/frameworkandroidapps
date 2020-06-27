@@ -1,4 +1,4 @@
-package com.e.extensions
+package co.devhack.androidextensions
 
 import java.text.SimpleDateFormat
 import java.util.*
